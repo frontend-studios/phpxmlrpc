@@ -249,17 +249,16 @@ class Request
             // makes the lib about 200% slower...
             //if (!is_valid_charset($respEncoding, array('UTF-8')))
             //if (!in_array($respEncoding, array('UTF-8', 'US-ASCII')) && !XMLParser::hasEncoding($data)) {
-            if (!in_array($respEncoding, array('UTF-8', 'US-ASCII'))) {
-                if ($respEncoding == 'ISO-8859-1') {
+            //    if ($respEncoding == 'ISO-8859-1') {
                     $data = utf8_encode($data);
-                } else {
-                    if (extension_loaded('mbstring')) {
-                        $data = mb_convert_encoding($data, 'UTF-8', $respEncoding);
-                    } else {
-                        error_log('XML-RPC: ' . __METHOD__ . ': invalid charset encoding of received response: ' . $respEncoding);
-                    }
-                }
-            }
+            //    } else {
+            //        if (extension_loaded('mbstring')) {
+            //            $data = mb_convert_encoding($data, 'UTF-8', $respEncoding);
+            //        } else {
+            //            error_log('XML-RPC: ' . __METHOD__ . ': invalid charset encoding of received response: ' . $respEncoding);
+            //        }
+            //    }
+            //}
         }
 
         $parser = xml_parser_create();
